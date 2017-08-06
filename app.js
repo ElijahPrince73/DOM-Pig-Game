@@ -15,6 +15,7 @@ var scores,
 
 initFunction();
 
+//Add Scores
 document.querySelector('.btn-roll').addEventListener('click', function() {
   if (gamePlaying) {
     dice = Math.floor(Math.random() * 6) + 1
@@ -33,11 +34,12 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
   }
 })
 
+//Holds Score
 document.querySelector('.btn-hold').addEventListener('click', function() {
   if (gamePlaying) {
     scores[activePlayer] += roundScore;
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer]
-    if (scores[activePlayer] >= 10) {
+    if (scores[activePlayer] >= 50) {
       document.getElementById('name-' + activePlayer).textContent = 'winner'
       document.querySelector('.dice').style.display = 'none'
       document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner')
@@ -50,6 +52,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
   }
 });
 
+//Restarts Game
 document.querySelector('.btn-new').addEventListener('click', initFunction)
 
 function initFunction() {
@@ -76,7 +79,7 @@ function initFunction() {
   document.querySelector('.player-0-panel').classList.add('active')
 
 }
-
+//Switches to Next Player
 function nextPlayer() {
   activePlayer === 0
     ? activePlayer = 1
